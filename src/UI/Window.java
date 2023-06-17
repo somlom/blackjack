@@ -1,17 +1,77 @@
 package UI;
 
-public class Window {
-    private String height;
-    private String width;
+import javax.swing.JButton;  
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-    public Window(String[] data) {
-        try {
-            if(data.length != 0){
-                this.width = data[0];
-                this.height = data[1];
-            }
-        } catch (Exception e) {
-            throw new Error("Sizing error: "+e, null);
-        }
-    }
+public class Window {
+   private JFrame mainFrame;
+   private JLabel headerLabel;
+   private JLabel statusLabel;
+   private JPanel controlPanel;
+
+   public Window(){
+      prepareGUI();
+   }
+   public static void main(String[] args){
+      Window Window = new Window();  
+      Window.showEventDemo();       
+   }
+   private void prepareGUI(){
+      mainFrame = new JFrame("Java SWING");
+      mainFrame.setSize(400,400);
+      mainFrame.setLayout(new GridLayout(3, 1)); //3 rows in 1 col
+
+      headerLabel = new JLabel("",JLabel.CENTER );
+      statusLabel = new JLabel("",JLabel.CENTER);        
+      statusLabel.setSize(350,100);
+      
+      mainFrame.addWindowListener(new WindowAdapter() {
+         public void windowClosing(WindowEvent windowEvent){
+            System.exit(0);
+         }        
+      });    
+      controlPanel = new JPanel();
+      controlPanel.setLayout(new FlowLayout());
+
+      mainFrame.add(headerLabel);
+      mainFrame.add(controlPanel);
+      mainFrame.add(statusLabel);
+      mainFrame.setVisible(true);  
+   }
+   private void showEventDemo(){
+      headerLabel.setText("Control in action: Button"); 
+
+      JButton okButton = new JButton("OK");
+      JButton submitButton = new JButton("Submit");
+      JButton cancelButton = new JButton("Cancel");
+
+      okButton.setActionCommand("OK");
+      submitButton.setActionCommand("Submit");
+      cancelButton.setActionCommand("Cancel");
+
+      okButton.addActionListener(new ButtonClickListener()); 
+      submitButton.addActionListener(new ButtonClickListener()); 
+      cancelButton.addActionListener(new ButtonClickListener()); 
+
+      controlPanel.add(okButton);
+      controlPanel.add(submitButton);
+      controlPanel.add(cancelButton);       
+
+      mainFrame.setVisible(true);  
+   }
+   private class ButtonClickListener implements ActionListener{
+      public void actionPerformed(ActionEvent e) {
+         String command = e.getActionCommand();  
+         
+         if( command.equals( "OK" ))  {
+            statusLabel.setText("Ok Button clicked.");
+         } else if( command.equals( "Submit" ) )  {
+            statusLabel.setText("Submit Button clicked."); 
+         } else {
+            statusLabel.setText("Cancel Button clicked.");
+         }  	
+      }		
+   }
 }
