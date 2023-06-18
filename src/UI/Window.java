@@ -1,21 +1,23 @@
 package UI;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class Window {
     private JFrame mainFrame;
-    private JLabel headerLabel;
-    private JLabel statusLabel;
-    private JPanel controlPanel;
-
+    private static JLabel headerLabel;
+    public static JLabel statusLabel;
+    private static JPanel controlPanel;
+    
     public Window() {
         prepareGUI();
+        System.out.println("prep");
     }
 
     public static void main(String[] args) {
         Window window = new Window();
-        window.showEventDemo();
+        window.showEvent(headerLabel, controlPanel, statusLabel);
     }
 
     private void prepareGUI() {
@@ -43,8 +45,8 @@ public class Window {
         mainFrame.setVisible(true);
     }
 
-    private void showEventDemo() {
-        headerLabel.setText("Control in action: Button");
+    private void showEvent(JLabel header, JPanel panel, JLabel status) {
+        header.setText("Control in action: Button");
 
         JButton upButton = new JButton("\u2191");
         JButton downButton = new JButton("\u2193");
@@ -61,32 +63,32 @@ public class Window {
         rightButton.addActionListener(new ButtonClickListener());
         leftButton.addActionListener(new ButtonClickListener());
 
-        controlPanel.add(upButton);
-        controlPanel.add(downButton);
-        controlPanel.add(rightButton);
-        controlPanel.add(leftButton);
+        panel.add(upButton);
+        panel.add(downButton);
+        panel.add(rightButton);
+        panel.add(leftButton);
 
         controlPanel.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
                 if (keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_W) {
-                    statusLabel.setText("Up");
+                    status.setText("Up");
                 } else if (keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_S) {
-                    statusLabel.setText("Down");
+                    status.setText("Down");
                 } else if (keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_A) {
-                    statusLabel.setText("Left");
+                    status.setText("Left");
                 } else if (keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_D) {
-                    statusLabel.setText("Right");
+                    status.setText("Right");
                 }
             }
         });
 
         mainFrame.setVisible(true);
-        controlPanel.requestFocus(); // Request focus for the controlPanel
+        controlPanel.requestFocus();
     }
 
-    private class ButtonClickListener implements ActionListener {
+    public class ButtonClickListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             String command = event.getActionCommand();
 
