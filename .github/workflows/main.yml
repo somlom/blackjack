@@ -1,0 +1,13 @@
+- name: Junit Coverage Report
+  # You may pin to the exact commit or the version.
+  # uses: xportation/junit-coverage-report@edcae1f705173c4e4fc9b00bf7f6629b6b40131b
+  uses: xportation/junit-coverage-report@v1.0.2
+  with:
+    # GitHub Access Token
+    github-token: # default is ${{ github.token }}
+    # JUnit file path
+    junit-path: # optional, default is ./unit.xml
+    # Coverage file path
+    coverage-path: # optional, default is ./coverage.xml
+    # Custom template file path
+    template-path: # optional
