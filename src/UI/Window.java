@@ -12,7 +12,6 @@ public class Window {
     
     public Window() {
         prepareGUI();
-        System.out.println("prep");
     }
 
     public static void main(String[] args) {
