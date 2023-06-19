@@ -1,2 +1,2 @@
-# blackjack
-School project ob java
+# Snakey
+School project on java
