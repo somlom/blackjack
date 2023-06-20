@@ -30,20 +30,18 @@ dependencies {
 }
 */
 plugins {
-    id  'java'
+    id 'java'
 }
- 
+
 repositories {
     mavenCentral()
 }
- 
+
 dependencies {
-    testImplementation('org.junit.jupiter:junit-jupiter:5.8.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'com.formdev:flatlaf:3.1.1'
 }
- 
-// test {
-//     useJUnitPlatform()
+
+// task wrapper(type: Wrapper) {
+//     gradleVersion = '7.4.2' //version required
 // }
-task wrapper(type: Wrapper) {
-   gradleVersion = '2.0' //version required
-}

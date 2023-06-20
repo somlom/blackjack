@@ -1,3 +1,5 @@
 node_files
 build
 dest
+# Ignore Gradle project-specific cache directory
+.gradle

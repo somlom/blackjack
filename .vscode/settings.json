@@ -1,4 +1,6 @@
 {"java.project.referencedLibraries": [
     "src/**/*.jar",
     "test-lib/**/*.jar"
-  ]}
+  ],
+  "java.configuration.updateBuildConfiguration": "interactive"
+}
