@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Window",
+            "request": "launch",
+            "mainClass": "Window",
+            "projectName": "snakey_4e8ca8ac"
+        },
+        {
+            "type": "java",
+            "name": "Window",
+            "request": "launch",
+            "mainClass": "Window",
+            "projectName": "snakey_2cfb3e0b"
+        },
+        {
+            "type": "java",
+            "name": "Window",
+            "request": "launch",
+            "mainClass": "Window",
+            "projectName": "snakey"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -15,7 +36,7 @@
             "name": "Window",
             "request": "launch",
             "mainClass": "UI.Window",
-            "projectName": "blackjack_2cfb3e0b"
+            "projectName": "snakey_2cfb3e0b"
         }
     ]
 }
