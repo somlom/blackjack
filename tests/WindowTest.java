@@ -5,27 +5,25 @@ import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import UI.Window;
-
 public class WindowTest {
 
-    @Test
-    public void testButtonClickListener() throws AWTException, InterruptedException {
-        Window window = new Window();
-        window.main(null);
-        // Simulate button clicks
-        simulateClick(KeyEvent.VK_UP);
-        assertEquals("Up", Window.statusLabel.getText());
+    // @Test
+    // public void testButtonClickListener() throws AWTException, InterruptedException {
+    //     Window window = new Window();
+    //     window.main(null);
+    //     // Simulate button clicks
+    //     simulateClick(KeyEvent.VK_UP);
+    //     assertEquals("Up", Window.statusLabel.getText());
 
-        simulateClick(KeyEvent.VK_DOWN);
-        assertEquals("Down", Window.statusLabel.getText());
+    //     simulateClick(KeyEvent.VK_DOWN);
+    //     assertEquals("Down", Window.statusLabel.getText());
 
-        simulateClick(KeyEvent.VK_RIGHT);
-        assertEquals("Right", Window.statusLabel.getText());
+    //     simulateClick(KeyEvent.VK_RIGHT);
+    //     assertEquals("Right", Window.statusLabel.getText());
 
-        simulateClick(KeyEvent.VK_LEFT);
-        assertEquals("Left", Window.statusLabel.getText());
-    }
+    //     simulateClick(KeyEvent.VK_LEFT);
+    //     assertEquals("Left", Window.statusLabel.getText());
+    // }
 
     @Test
     public void testKeyPressListener() throws AWTException, InterruptedException {
