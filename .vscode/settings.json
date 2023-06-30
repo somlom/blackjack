@@ -1,0 +1,18 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "test-lib/junit-platform-console-standalone-1.10.0-M1.jar"
+    ]
+} // {
+//   "java.project.sourcePaths": [
+//     "snakey/UI",
+//     "snakey/controller",
+//     "snakeytests"
+//   ]
+// } 
+// {"java.project.referencedLibraries": [
+//     "src/**/*.jar",
+//     "test-lib/**/*.jar"
+//   ],
+//   "java.configuration.updateBuildConfiguration": "automatic"
+// }
