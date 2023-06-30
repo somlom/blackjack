@@ -14,10 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 
 public class Window {
-    private JFrame mainFrame;
+    JFrame mainFrame;
     private static JLabel headerLabel;
     public static JLabel statusLabel;
-    private static JPanel controlPanel;
+    static JPanel controlPanel;
     int previous_state = 40;
     
     public Window() {
@@ -29,15 +29,19 @@ public class Window {
         window.showEvent(headerLabel, controlPanel, statusLabel);
     }
 
+    public int get_state(){
+        return previous_state;
+    }
+
     private void prepareGUI() {
         mainFrame = new JFrame("Java SWING");
         mainFrame.setSize(500, 500);
-        mainFrame.setLayout(new GridLayout(3, 1)); // 3 rows in 1 col
+        mainFrame.setLayout(new GridLayout(3, 1));  //3 rows in 1 col
 
         headerLabel = new JLabel("", JLabel.CENTER);
-        statusLabel = new JLabel("", JLabel.CENTER);
-        statusLabel.setSize(350, 100);
-        statusLabel.setSize(350, 100);
+         statusLabel = new JLabel("", JLabel.CENTER);
+         statusLabel.setSize(350, 100);
+         statusLabel.setSize(350, 100);
 
         mainFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent) {
@@ -46,7 +50,7 @@ public class Window {
         });
         controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
-        controlPanel.setFocusable(true); // Set the panel focusable
+        controlPanel.setFocusable(true);//  Set the panel focusable
 
         mainFrame.add(headerLabel);
         mainFrame.add(statusLabel);
@@ -107,13 +111,13 @@ public class Window {
             String command = event.getActionCommand();
 
             if (command.equals("up")) {
-                statusLabel.setText("Up");
+                 statusLabel.setText("Up");
             } else if (command.equals("down")) {
-                statusLabel.setText("Down");
+                 statusLabel.setText("Down");
             } else if (command.equals("right")) {
-                statusLabel.setText("Right");
+                 statusLabel.setText("Right");
             } else if (command.equals("left")) {
-                statusLabel.setText("Left");
+                 statusLabel.setText("Left");
             }
         }
     }
