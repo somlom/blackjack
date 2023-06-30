@@ -9,6 +9,13 @@
             "name": "Window",
             "request": "launch",
             "mainClass": "Window",
+            "projectName": "snakey_4e8ca8ac"
+        },
+        {
+            "type": "java",
+            "name": "Window",
+            "request": "launch",
+            "mainClass": "Window",
             "projectName": "snakey"
         },
         {
