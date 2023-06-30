@@ -1,12 +1,24 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
+
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 
 public class Window {
     private JFrame mainFrame;
     private static JLabel headerLabel;
     public static JLabel statusLabel;
     private static JPanel controlPanel;
+    int previous_state = 40;
     
     public Window() {
         prepareGUI();
@@ -44,7 +56,6 @@ public class Window {
 
     private void showEvent(JLabel header, JPanel panel, JLabel status) {
         header.setText("Control in action: Button");
-
         JButton upButton = new JButton("\u2191");
         JButton downButton = new JButton("\u2193");
         JButton rightButton = new JButton("\u2192");
@@ -68,16 +79,22 @@ public class Window {
         controlPanel.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+
                 int keyCode = e.getKeyCode();
-                if (keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_W) {
-                    status.setText("Up");
-                } else if (keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_S) {
-                    status.setText("Down");
-                } else if (keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_A) {
-                    status.setText("Left");
-                } else if (keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_D) {
-                    status.setText("Right");
+                
+                if (!(Math.pow(previous_state-keyCode, 2) == 4 || previous_state-keyCode == 0)) {
+                    if (keyCode == KeyEvent.VK_UP) {
+                        status.setText("Up");
+                    } else if (keyCode == KeyEvent.VK_DOWN) {
+                        status.setText("Down");
+                    } else if (keyCode == KeyEvent.VK_LEFT) {
+                        status.setText("Left");
+                    } else if (keyCode == KeyEvent.VK_RIGHT) {
+                        status.setText("Right");
+                    }
                 }
+                previous_state = keyCode;
+
             }
         });
 

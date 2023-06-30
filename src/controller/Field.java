@@ -22,22 +22,3 @@ public class Field {
 
     };
 }
-
-
-
-
-
-
-
-
-
-        
-/*        int[][] playground = new int[100][100];
-
-        for (int i = 0; i < playground.length; i++){
-            for (int j = 0; j < playground[i].length; j++)
-            {
-                System.out.print(playground[i][j]+ " ");
-            }
-            System.out.println();
-        }*/
