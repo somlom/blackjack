@@ -1,8 +1,6 @@
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowAdapter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -14,52 +12,47 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 
 public class Window {
-    JFrame mainFrame;
+    private JFrame mainFrame;
     private static JLabel headerLabel;
-    public static JLabel statusLabel;
-    static JPanel controlPanel;
-    int previous_state = 40;
-    
+    private static Field field;
+    private static JPanel controlPanel;
+    private int previous_state = 40;
+
     public Window() {
         prepareGUI();
     }
 
     public static void main(String[] args) {
         Window window = new Window();
-        window.showEvent(headerLabel, controlPanel, statusLabel);
-    }
-
-    public int get_state(){
-        return previous_state;
+        window.showEvent();
     }
 
     private void prepareGUI() {
         mainFrame = new JFrame("Java SWING");
         mainFrame.setSize(500, 500);
-        mainFrame.setLayout(new GridLayout(3, 1));  //3 rows in 1 col
+        mainFrame.setLayout(new GridLayout(3, 1));
 
         headerLabel = new JLabel("", JLabel.CENTER);
-         statusLabel = new JLabel("", JLabel.CENTER);
-         statusLabel.setSize(350, 100);
-         statusLabel.setSize(350, 100);
+        field = new Field();
+        field.setSize(350, 100);
 
-        mainFrame.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent windowEvent) {
+        mainFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 System.exit(0);
             }
         });
         controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
-        controlPanel.setFocusable(true);//  Set the panel focusable
+        controlPanel.setFocusable(true);
 
         mainFrame.add(headerLabel);
-        mainFrame.add(statusLabel);
+        mainFrame.add(field);
         mainFrame.add(controlPanel);
         mainFrame.setVisible(true);
     }
 
-    private void showEvent(JLabel header, JPanel panel, JLabel status) {
-        header.setText("Control in action: Button");
+    private void showEvent() {
+        headerLabel.setText("Control in action: Button");
         JButton upButton = new JButton("\u2191");
         JButton downButton = new JButton("\u2193");
         JButton rightButton = new JButton("\u2192");
@@ -75,30 +68,28 @@ public class Window {
         rightButton.addActionListener(new ButtonClickListener());
         leftButton.addActionListener(new ButtonClickListener());
 
-        panel.add(upButton);
-        panel.add(downButton);
-        panel.add(rightButton);
-        panel.add(leftButton);
+        controlPanel.add(upButton);
+        controlPanel.add(downButton);
+        controlPanel.add(rightButton);
+        controlPanel.add(leftButton);
 
         controlPanel.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-
                 int keyCode = e.getKeyCode();
-                
-                if (!(Math.pow(previous_state-keyCode, 2) == 4 || previous_state-keyCode == 0)) {
+
+                if (!(Math.pow(previous_state - keyCode, 2) == 4 || previous_state - keyCode == 0)) {
                     if (keyCode == KeyEvent.VK_UP) {
-                        status.setText("Up");
+                        field.update_state("Up");
                     } else if (keyCode == KeyEvent.VK_DOWN) {
-                        status.setText("Down");
+                        field.update_state("Down");
                     } else if (keyCode == KeyEvent.VK_LEFT) {
-                        status.setText("Left");
+                        field.update_state("Left");
                     } else if (keyCode == KeyEvent.VK_RIGHT) {
-                        status.setText("Right");
+                        field.update_state("Right");
                     }
                 }
                 previous_state = keyCode;
-
             }
         });
 
@@ -110,14 +101,14 @@ public class Window {
         public void actionPerformed(ActionEvent event) {
             String command = event.getActionCommand();
 
-            if (command.equals("up")) {
-                 statusLabel.setText("Up");
-            } else if (command.equals("down")) {
-                 statusLabel.setText("Down");
-            } else if (command.equals("right")) {
-                 statusLabel.setText("Right");
-            } else if (command.equals("left")) {
-                 statusLabel.setText("Left");
+            if (command.equals("up") && previous_state != 40) {
+                field.update_state("Up");
+            } else if (command.equals("down") && previous_state != 38) {
+                field.update_state("Down");
+            } else if (command.equals("right") && previous_state != 37) {
+                field.update_state("Right");
+            } else if (command.equals("left") && previous_state != 39) {
+                field.update_state("Left");
             }
         }
     }
