@@ -9,20 +9,6 @@
             "name": "Window",
             "request": "launch",
             "mainClass": "Window",
-            "projectName": "snakey_4e8ca8ac"
-        },
-        {
-            "type": "java",
-            "name": "Window",
-            "request": "launch",
-            "mainClass": "Window",
-            "projectName": "snakey_2cfb3e0b"
-        },
-        {
-            "type": "java",
-            "name": "Window",
-            "request": "launch",
-            "mainClass": "Window",
             "projectName": "snakey"
         },
         {
@@ -30,13 +16,6 @@
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Window",
-            "request": "launch",
-            "mainClass": "UI.Window",
-            "projectName": "snakey_2cfb3e0b"
         }
     ]
 }

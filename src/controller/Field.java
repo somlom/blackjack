@@ -1,24 +1,15 @@
-package src.controller;
-
 public class Field {
-    public static void main(String[] args)
-    {
-        int fieldWidth = 10;
-        int fieldHight = 10;
-        char[][] playground = new char[fieldHight][fieldWidth];
-        for (int i=0; i< fieldHight; i++)
-        {
-            for(int j = 0 ;i < fieldWidth; j++){
+
+    public static void init(int height, int width){
+        int[][] playground = new int[height][width];
+        for (int i = 0; i < height; i++){
+            for(int j = 0;i < width; j++){
                 playground[i][j] = ' ';
-            }
-        }
-        for (int i = 0; i < fieldHight; i++) 
-        {
-            for (int j = 0; j < fieldWidth; j++) {
                 System.out.print(playground[i][j] + " ");
             }
-                System.out.println();
         }
-
-    };
+    }
+    public static void main(String[] args){
+        init(32, 32);
+    }
 }
