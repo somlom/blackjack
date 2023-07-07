@@ -26,25 +26,25 @@ public class Field extends JPanel implements KeyListener {
         snakeSize = 20;
     }
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    protected void paintComponent(Graphics graphic_component) {
+        super.paintComponent(graphic_component);
 
         // Hintergrund zeichnen
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+        graphic_component.setColor(Color.BLACK);
+        graphic_component.fillRect(0, 0, WIDTH, HEIGHT);
 
         // Gitter zeichnen
-        g.setColor(Color.GRAY);
+        graphic_component.setColor(Color.GRAY);
         for (int x = 0; x < WIDTH; x += snakeSize) {
-            g.drawLine(x, 0, x, HEIGHT);
+            graphic_component.drawLine(x, 0, x, HEIGHT);
         }
         for (int y = 0; y < HEIGHT; y += snakeSize) {
-            g.drawLine(0, y, WIDTH, y);
+            graphic_component.drawLine(0, y, WIDTH, y);
         }
 
         // Schlange zeichnen
-        g.setColor(Color.GREEN);
-        g.fillRect(snakeX, snakeY, snakeSize, snakeSize);
+        graphic_component.setColor(Color.GREEN);
+        graphic_component.fillRect(snakeX, snakeY, snakeSize, snakeSize);
     }
 
     public void add_length(){
