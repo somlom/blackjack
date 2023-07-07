@@ -47,7 +47,7 @@ public class Field extends JPanel implements KeyListener {
         g.fillRect(snakeX, snakeY, snakeSize, snakeSize);
     }
 
-    public void update_state(String direction){
+    public void add_length(){
 
         // Create a new array with the desired length
         String[] newArray = new String[state.length+1];
@@ -55,13 +55,20 @@ public class Field extends JPanel implements KeyListener {
         // Copy the elements from the original array to the new array
         int lengthToCopy = Math.min(state.length, state.length+1);
         System.arraycopy(state, 0, newArray, 0, lengthToCopy);
-        newArray[newArray.length-1]=direction;
+        newArray[newArray.length-1]=newArray[newArray.length-2];
 
         // Update the reference to the new array
         state = newArray;
         for (String i : newArray) {
             System.out.println(i);
         }
+    }
+
+    public void update_state(String direction){
+        for (int i = 1; i < state.length; i++) {
+            state[i-1]=state[i];
+        }
+        state[state.length-1]=direction;
     }
 
     public void keyPressed(KeyEvent e) {
