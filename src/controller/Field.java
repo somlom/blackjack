@@ -1,11 +1,13 @@
+package src.controller;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JPanel;
 
 public class Field extends JPanel implements KeyListener {
-    // Spielfeldgröße
-    private static final int WIDTH = 600;
-    private static final int HEIGHT = 600;
+    // // Spielfeldgröße
+    private static final int WIDTH_ = 10;
+    private static final int HEIGHT_ = WIDTH_;
     private String[] state = new String[]{"Down","Down","Down"};
 
     // Position und Größe der Schlange
@@ -15,37 +17,41 @@ public class Field extends JPanel implements KeyListener {
 
     public Field() {
         // Fenstereinstellungen
-        setSize(WIDTH, HEIGHT);
+        setSize(WIDTH_, HEIGHT_);
         setBackground(Color.BLACK);
         setVisible(true);
         addKeyListener(this);
 
         // Startposition und Größe der Schlange
-        snakeX = WIDTH / 2;
-        snakeY = HEIGHT / 2;
+        snakeX = WIDTH_ / 2;
+        snakeY = HEIGHT_ / 2;
         snakeSize = 20;
     }
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
 
-        // Hintergrund zeichnen
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+    // Hintergrund zeichnen
+    g.setColor(Color.BLACK);
+    g.fillRect(0, 0, getWidth(), getHeight());
 
-        // Gitter zeichnen
-        g.setColor(Color.GRAY);
-        for (int x = 0; x < WIDTH; x += snakeSize) {
-            g.drawLine(x, 0, x, HEIGHT);
-        }
-        for (int y = 0; y < HEIGHT; y += snakeSize) {
-            g.drawLine(0, y, WIDTH, y);
-        }
-
-        // Schlange zeichnen
-        g.setColor(Color.GREEN);
-        g.fillRect(snakeX, snakeY, snakeSize, snakeSize);
+    // Gitter zeichnen
+    g.setColor(Color.GRAY);
+    for (int x = 0; x < getWidth(); x += snakeSize) {
+        g.drawLine(x, 0, x, getHeight());
     }
+    for (int y = 0; y < getHeight(); y += snakeSize) {
+        g.drawLine(0, y, getWidth(), y);
+    }
+
+    // Schlange zeichnen
+    g.setColor(Color.GREEN);
+    int snakeGridX = (snakeX / snakeSize) * snakeSize; // Runden der X-Position zur nächsten Gitterlinie
+    int snakeGridY = (snakeY / snakeSize) * snakeSize; // Runden der Y-Position zur nächsten Gitterlinie
+    g.fillRect(snakeGridX, snakeGridY, snakeSize, snakeSize);
+}
+
+
 
     public void update_state(String direction){
 
@@ -64,18 +70,22 @@ public class Field extends JPanel implements KeyListener {
         }
     }
 
-    public void keyPressed(KeyEvent e) {
-        // Tastatureingabe verarbeiten
-        int keyCode = e.getKeyCode();
-        System.out.println(keyCode);
-
-        if (keyCode >=37 && keyCode<=40 ) {
-            snakeY += snakeSize;
-        }
-
-        // Spielfeld neu zeichnen
-        repaint();
+public void keyPressed(KeyEvent e) {
+    int keyCode = e.getKeyCode();
+    
+    if (keyCode == KeyEvent.VK_UP) {
+        snakeY -= snakeSize;
+    } else if (keyCode == KeyEvent.VK_DOWN) {
+        snakeY += snakeSize;
+    } else if (keyCode == KeyEvent.VK_LEFT) {
+        snakeX -= snakeSize;
+    } else if (keyCode == KeyEvent.VK_RIGHT) {
+        snakeX += snakeSize;
     }
+    
+    repaint();
+}
+
 
     public void keyTyped(KeyEvent e) {
 
