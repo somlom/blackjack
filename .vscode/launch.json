@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Game",
+            "request": "launch",
+            "mainClass": "Game",
+            "projectName": "snakey_4e8ca8ac"
+        },
+        {
+            "type": "java",
             "name": "Window",
             "request": "launch",
             "mainClass": "Window",
