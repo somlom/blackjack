@@ -6,9 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Window",
+            "name": "Game",
             "request": "launch",
-            "mainClass": "Window",
+            "mainClass": "Game",
             "projectName": "snakey_4e8ca8ac"
         },
         {
@@ -16,7 +16,7 @@
             "name": "Window",
             "request": "launch",
             "mainClass": "Window",
-            "projectName": "snakey_2cfb3e0b"
+            "projectName": "snakey_f655f57f"
         },
         {
             "type": "java",
@@ -30,13 +30,6 @@
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Window",
-            "request": "launch",
-            "mainClass": "UI.Window",
-            "projectName": "snakey_2cfb3e0b"
         }
     ]
 }
