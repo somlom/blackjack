@@ -70,7 +70,7 @@ public class Game extends JPanel implements ActionListener {
             }
 
             g.setColor(Color.WHITE);
-            // g.setFont(new Font("Arial", Font.BOLD, 14));
+            g.setFont(new Font("Arial", Font.BOLD, 14));
             FontMetrics metrics = getFontMetrics(g.getFont());
             g.drawString("Score: " + applesEaten, (WIDTH - metrics.stringWidth("Score: " + applesEaten)) / 2, g.getFont().getSize());
         } else {
